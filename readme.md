@@ -8,7 +8,7 @@
 
 ## 2.基本原理
 
-![1616238063733](.\img\1616238058.png)
+![1616238063733](https://gitee.com/whiteandy/TimeWheel/blob/master/img/1616238058.png)
 
 
 
