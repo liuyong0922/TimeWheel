@@ -8,8 +8,8 @@
 
 ## 2.基本原理
 
-![1616238063733](https://gitee.com/whiteandy/TimeWheel/blob/master/img/1616238058.png)
 
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0320/201844_e674b99e_5311479.png "1616238058(1).png")
 
 
 ​	时间轮由多个时间格组成，每个时间格代表当前时间轮的基本时间跨度（tickMs）。时间轮的时间格个数是固定的，可用wheelSize来表示，那么整个时间轮的总体时间跨度（interval）可以通过公式 tickMs × wheelSize计算得出。时间轮还有一个表盘指针（currentTime），用来表示时间轮当前所处的时间，currentTime是tickMs的整数倍。currentTime可以将整个时间轮划分为到期部分和未到期部分，currentTime当前指向的时间格也属于到期部分，表示刚好到期，需要处理此时间格所对应的任务列表中的所有任务。
