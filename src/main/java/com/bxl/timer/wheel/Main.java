@@ -41,12 +41,12 @@ public class Main {
     public static void main(String[] args) {
         Random random = new Random();
         long start = System.currentTimeMillis();
-        TimerWheel.adddTask(new MyTask(27, TimeUnit.SECONDS, 1001, new Date().getTime()), (long) 27, TimeUnit.SECONDS);
-        TimerWheel.adddTask(new MyTask(67, TimeUnit.SECONDS, 1002, new Date().getTime()), (long) 67, TimeUnit.SECONDS);
-        TimerWheel.adddTask(new MyTask(1000, TimeUnit.SECONDS, 1003, new Date().getTime()), (long) 1000, TimeUnit.SECONDS);
+        TimerWheel.adddTask(new MyTask(27, TimeUnit.SECONDS, 1001), (long) 27, TimeUnit.SECONDS);
+        TimerWheel.adddTask(new MyTask(67, TimeUnit.SECONDS, 1002), (long) 67, TimeUnit.SECONDS);
+        TimerWheel.adddTask(new MyTask(1000, TimeUnit.SECONDS, 1003), (long) 1000, TimeUnit.SECONDS);
         for (int i = 0; i < 1000; i++) {
             int interval = random.nextInt(2700);
-            TimerWheel.adddTask(new MyTask(interval, TimeUnit.SECONDS, i, new Date().getTime()), (long) interval, TimeUnit.SECONDS);
+            TimerWheel.adddTask(new MyTask(interval, TimeUnit.SECONDS, i), (long) interval, TimeUnit.SECONDS);
         }
         System.out.println("use time" + (System.currentTimeMillis() - start));
         System.out.println("111");
@@ -79,8 +79,10 @@ public class Main {
     }
 
     static class MyTask extends com.bxl.timer.wheel.task.MyTask {
-        public MyTask(long interval, TimeUnit unit, int index, long startTime) {
-            super(interval, unit, index, startTime);
+        private long startTime;
+        public MyTask(long interval, TimeUnit unit, int index) {
+            super(interval, unit, index);
+            this.startTime = new Date().getTime();
         }
 
         @Override

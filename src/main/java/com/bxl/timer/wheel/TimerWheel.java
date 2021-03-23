@@ -27,6 +27,9 @@ public class TimerWheel {
     private static wheelThread wheelThread;
 
     public static  void adddTask(MyTask task, Long time, TimeUnit unit) {
+        if(task == null){
+            return;
+        }
         long intervalTime = TimeUnitProvider.getTimeUnit().convert(time, unit);
         if(intervalTime < 1){
             ThreadPool.submit(task);

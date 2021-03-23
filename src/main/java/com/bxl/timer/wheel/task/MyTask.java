@@ -2,6 +2,7 @@ package com.bxl.timer.wheel.task;
 
 import com.bxl.timer.wheel.provider.TimeUnitProvider;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,12 +14,10 @@ import java.util.concurrent.TimeUnit;
 public abstract class MyTask implements Runnable {
      protected long interval;
      protected int index;
-     protected long startTime;
      protected long executeTime;
-     public MyTask(long interval, TimeUnit unit, int index, long startTime) {
+     public MyTask(long interval, TimeUnit unit, int index) {
           this.interval  = interval;
           this.index = index;
-          this.startTime = startTime;
           this.executeTime= TimeUnitProvider.getTimeUnit().convert(interval,unit)+TimeUnitProvider.getTimeUnit().convert(System.nanoTime(),TimeUnit.NANOSECONDS);
      }
      public long getDelay() {
